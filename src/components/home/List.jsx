@@ -32,7 +32,7 @@ function List() {
       <TodoItemList>
         {todos.map((todo) => {
           return (
-            <div key={todo.id}>
+            <TodoItem key={todo.id}>
               {/* 할 일 하는 중 */}
               {todo.isDone === false && (
                 <Todo
@@ -42,18 +42,18 @@ function List() {
                   onToggleHandler={onToggleHandler}
                 />
               )}
-            </div>
+            </TodoItem>
           );
         })}
       </TodoItemList>
       <h3>Done..!🎉</h3>
       {/* 할 일 완료 */}
       {/* <Todo todo={todo} key={todo.id}></Todo> */}
-      <CompletedItemList>
+      <TodoItemList>
         {todos.map((todo) => {
           // eslint-disable-next-line no-lone-blocks
           return (
-            <div key={todo.id}>
+            <TodoItem key={todo.id}>
               {todo.isDone === true && (
                 <Todo
                   todo={todo}
@@ -62,44 +62,28 @@ function List() {
                   onToggleHandler={onToggleHandler}
                 />
               )}
-            </div>
+            </TodoItem>
           );
         })}
-      </CompletedItemList>
+      </TodoItemList>
     </Container>
   );
 }
 
 const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   background-color: rgb(255, 255, 255);
   height: 250px;
   margin: 0px 20px;
 `;
 
 const TodoItemList = styled.div`
+  width: 100%;
   text-align: center;
   display: flex;
-  flex-direction: row;
-  /* justify-content: center; */
+  align-items: flex-start;
+  gap: 20px 2%;
   height: 240px;
-  div {
-    margin: 5px;
-  }
-`;
-
-const CompletedItemList = styled.div`
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  /* justify-content: center; */
-  height: 240px;
-  div {
-    margin: 5px;
-  }
-  div:nth-child(1) {
-    margin-left: 0px;
-  }
 `;
 
 const TodoItem = styled.div``;

@@ -23,9 +23,9 @@ function Form() {
   const [todo, setTodo] = useState(initialState);
 
   // 초기렌더링 시 input에 focus 주기
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+  // useEffect(() => {
+  //   inputRef.current.focus();
+  // }, []);
 
   const onChangeHandler = useCallback(
     (e) => {
@@ -46,6 +46,7 @@ function Form() {
       idCreate();
       // [...todos, todo]
       setTodo(initialState); //input값 초기값으로 다시 세팅
+      inputRef.current.focus(); // 등록될 때마다 input에 focus 주기
     },
     [dispatch, todo, initialState]
   );
