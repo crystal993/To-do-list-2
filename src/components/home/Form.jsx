@@ -8,7 +8,7 @@ import { addTodo } from "../../redux/modules/todos";
 
 function Form() {
   const dispatch = useDispatch();
-  const nextId = useRef(3);
+  const nextId = useRef(3); //ID를 전역변수로 저장
   const inputRef = useRef(null); //input에 focus 주기
 
   // 초기값
@@ -27,6 +27,7 @@ function Form() {
   //   inputRef.current.focus();
   // }, []);
 
+  // 컴포넌트 최적화를 위해 useCallback을 사용
   const onChangeHandler = useCallback(
     (e) => {
       const { name, value } = e.target;
@@ -35,6 +36,7 @@ function Form() {
     [todo]
   );
 
+  // id 생성 함수
   const idCreate = () => {
     nextId.current += 1;
   };
