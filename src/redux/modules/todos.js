@@ -31,7 +31,7 @@ const initialState = {
     {
       id: 1, // id는 모두 고유값이어야 합니다.
       title: "리액트 강의보기",
-      memo: "챕터 1부터 챕터 12까지 학습",
+      memo: "공부공부",
       isDone: false,
     },
     {
