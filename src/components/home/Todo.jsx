@@ -11,7 +11,7 @@ function Todo({ todo, setTodos, onDeleteHanlder, onToggleHandler }) {
         </ItemContents>
       </StyledLink>
       <ItemButtons>
-        <button onClick={() => onDeleteHanlder(todo.id)}>삭제하기</button>
+        <button onClick={() => onDeleteHanlder(todo.id)}>삭제</button>
         <button onClick={() => onToggleHandler(todo.id)}>
           {todo.isDone ? "취소" : "완료"}
         </button>
@@ -23,7 +23,7 @@ function Todo({ todo, setTodos, onDeleteHanlder, onToggleHandler }) {
 const TodoItem = styled.div`
   box-sizing: border-box;
 
-  width: 100%;
+  width: 24%;
   height: 200px;
 
   border: 1px solid #017573;
@@ -41,6 +41,7 @@ const ItemContents = styled.div`
 `;
 
 const ItemButtons = styled.div`
+  width: 100%;
   button {
     background-color: white;
     padding: 10px;
@@ -48,7 +49,7 @@ const ItemButtons = styled.div`
     border-radius: 3px;
     cursor: pointer;
     border: 1px solid #256449;
-    width: 100px;
+    width: 40%;
   }
   button:nth-child(1) {
     background-color: white;

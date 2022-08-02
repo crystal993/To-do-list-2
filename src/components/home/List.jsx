@@ -7,7 +7,6 @@ import { deleteTodo, toggleStatusTodo } from "../../redux/modules/todos";
 import Todo from "./Todo";
 
 function List() {
-  // 스토어에 저장된 값을 가져온다.
   const todos = useSelector((state) => state.todos.list);
   const dispatch = useDispatch();
 
@@ -31,8 +30,7 @@ function List() {
       <StyledItemList>
         {todos.map((todo) => {
           return (
-            <StyledTodoItem key={todo.id}>
-              {/* 할 일 하는 중 */}
+            <>
               {todo.isDone === false && (
                 <Todo
                   todo={todo}
@@ -41,18 +39,15 @@ function List() {
                   onToggleHandler={onToggleHandler}
                 />
               )}
-            </StyledTodoItem>
+            </>
           );
         })}
       </StyledItemList>
       <h3>Done..!🎉</h3>
-      {/* 할 일 완료 */}
-      {/* <Todo todo={todo} key={todo.id}></Todo> */}
       <StyledItemList>
         {todos.map((todo) => {
-          // eslint-disable-next-line no-lone-blocks
           return (
-            <StyledTodoItem key={todo.id}>
+            <>
               {todo.isDone === true && (
                 <Todo
                   todo={todo}
@@ -61,7 +56,7 @@ function List() {
                   onToggleHandler={onToggleHandler}
                 />
               )}
-            </StyledTodoItem>
+            </>
           );
         })}
       </StyledItemList>
@@ -72,19 +67,22 @@ function List() {
 const StyledContainer = styled.div`
   width: 100%;
   background-color: rgb(255, 255, 255);
-  height: 250px;
   margin: 0px 20px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledItemList = styled.div`
   width: 100%;
+  height: 200px;
   text-align: center;
+  flex-direction: row;
   display: flex;
-  align-items: flex-start;
-  gap: 20px 2%;
-  height: 240px;
+  /* flex-wrap: wrap;  */
+  flex-flow: row wrap;
+  align-content: space-between;
+  column-gap: 10px;
+  row-gap: 10px;
 `;
-
-const StyledTodoItem = styled.div``;
 
 export default React.memo(List);

@@ -35,29 +35,23 @@ function Detail() {
 }
 
 const StyledWrap = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-const StyledTodoItem = styled.div`
-  box-sizing: border-box;
-
-  width: 50%;
-  height: 300px;
-
-  margin: 25% auto;
-
-  border: 1px solid #017573;
-  border-radius: 10px;
-
+  // 요소 정중앙에 정렬
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+`;
+const StyledTodoItem = styled.div`
+  width: 45%;
+  height: 300px;
+  border: 1px solid #017573;
+  border-radius: 10px;
   color: rgb(38, 37, 37);
 `;
 
 const StyledItemContents = styled.div`
-  text-align: left;
+  margin-top: 50px;
 `;
 
 const StyledItemButtons = styled.div`
