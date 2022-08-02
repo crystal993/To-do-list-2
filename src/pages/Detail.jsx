@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ function Detail() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useCallback(() => {
     dispatch(getTodoId(id));
     console.log(dispatch);
   }, [dispatch, id]);

@@ -74,7 +74,8 @@ const StyledContainer = styled.div`
 
 const StyledItemList = styled.div`
   width: 100%;
-  height: 200px;
+  min-height: 200px;
+  height: 100%;
   text-align: center;
   flex-direction: row;
   display: flex;
@@ -83,6 +84,7 @@ const StyledItemList = styled.div`
   align-content: space-between;
   column-gap: 10px;
   row-gap: 10px;
+  margin-bottom: 30px;
 `;
 
 export default React.memo(List);
