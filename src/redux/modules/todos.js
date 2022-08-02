@@ -44,7 +44,7 @@ const initialState = {
   todo: {
     id: 0,
     title: "",
-    body: "",
+    memo: "",
     isDone: false,
   },
 };
@@ -53,9 +53,15 @@ const initialState = {
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
+      const to_do = {
+        id: state.list.at(-1).id + 1,
+        title: action.todo.title,
+        memo: action.todo.memo,
+        isDone: false,
+      };
       return {
         ...state,
-        list: [...state.list, action.todo],
+        list: [...state.list, to_do],
       };
 
     case DELETE_TODO:

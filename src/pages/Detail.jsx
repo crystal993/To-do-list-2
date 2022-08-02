@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodoId } from "../redux/modules/todos";
 
@@ -10,7 +10,6 @@ function Detail() {
   const todo = useSelector((state) => state.todos.todo);
 
   const { id } = useParams();
-  console.log(id);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,29 +17,28 @@ function Detail() {
     console.log(dispatch);
   }, [dispatch, id]);
 
-  console.log(todo);
-
   return (
-    <Wrap>
-      <TodoItem>
-        <ItemContents>
+    <StyledWrap>
+      <Outlet />
+      <StyledTodoItem>
+        <StyledItemContents>
           <p>ID : {todo.id}</p>
           <h2>{todo.title}</h2>
           <p>{todo.memo}</p>
-        </ItemContents>
-        <ItemButtons>
+        </StyledItemContents>
+        <StyledItemButtons>
           <button onClick={() => navigate("/")}>이전으로</button>
-        </ItemButtons>
-      </TodoItem>
-    </Wrap>
+        </StyledItemButtons>
+      </StyledTodoItem>
+    </StyledWrap>
   );
 }
 
-const Wrap = styled.div`
+const StyledWrap = styled.div`
   width: 100%;
   height: 100%;
 `;
-const TodoItem = styled.div`
+const StyledTodoItem = styled.div`
   box-sizing: border-box;
 
   width: 50%;
@@ -58,11 +56,11 @@ const TodoItem = styled.div`
   color: rgb(38, 37, 37);
 `;
 
-const ItemContents = styled.div`
+const StyledItemContents = styled.div`
   text-align: left;
 `;
 
-const ItemButtons = styled.div`
+const StyledItemButtons = styled.div`
   button {
     background-color: white;
     padding: 10px;

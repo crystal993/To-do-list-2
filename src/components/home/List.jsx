@@ -9,7 +9,6 @@ import Todo from "./Todo";
 function List() {
   // 스토어에 저장된 값을 가져온다.
   const todos = useSelector((state) => state.todos.list);
-  console.log("List:", todos);
   const dispatch = useDispatch();
 
   const onDeleteHanlder = useCallback(
@@ -27,12 +26,12 @@ function List() {
   );
 
   return (
-    <Container>
+    <StyledContainer>
       <h3>Working.. 🔥</h3>
-      <TodoItemList>
+      <StyledItemList>
         {todos.map((todo) => {
           return (
-            <TodoItem key={todo.id}>
+            <StyledTodoItem key={todo.id}>
               {/* 할 일 하는 중 */}
               {todo.isDone === false && (
                 <Todo
@@ -42,18 +41,18 @@ function List() {
                   onToggleHandler={onToggleHandler}
                 />
               )}
-            </TodoItem>
+            </StyledTodoItem>
           );
         })}
-      </TodoItemList>
+      </StyledItemList>
       <h3>Done..!🎉</h3>
       {/* 할 일 완료 */}
       {/* <Todo todo={todo} key={todo.id}></Todo> */}
-      <TodoItemList>
+      <StyledItemList>
         {todos.map((todo) => {
           // eslint-disable-next-line no-lone-blocks
           return (
-            <TodoItem key={todo.id}>
+            <StyledTodoItem key={todo.id}>
               {todo.isDone === true && (
                 <Todo
                   todo={todo}
@@ -62,22 +61,22 @@ function List() {
                   onToggleHandler={onToggleHandler}
                 />
               )}
-            </TodoItem>
+            </StyledTodoItem>
           );
         })}
-      </TodoItemList>
-    </Container>
+      </StyledItemList>
+    </StyledContainer>
   );
 }
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   width: 100%;
   background-color: rgb(255, 255, 255);
   height: 250px;
   margin: 0px 20px;
 `;
 
-const TodoItemList = styled.div`
+const StyledItemList = styled.div`
   width: 100%;
   text-align: center;
   display: flex;
@@ -86,6 +85,6 @@ const TodoItemList = styled.div`
   height: 240px;
 `;
 
-const TodoItem = styled.div``;
+const StyledTodoItem = styled.div``;
 
-export default List;
+export default React.memo(List);

@@ -1,16 +1,18 @@
 // 1. 스토어 생성
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { combineReducers } from "redux";
+import logger from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-// 2. 모듈 가져오기
 import todos from "../modules/todos";
 
-// 2. 커운터 모듈을 스토어에 연결하기
 const rootReducer = combineReducers({
   todos,
 });
 
-// 1. 스토어 생성
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(logger))
+);
 
 export default store;

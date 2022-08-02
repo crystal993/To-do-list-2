@@ -8,7 +8,6 @@ import { addTodo } from "../../redux/modules/todos";
 
 function Form() {
   const dispatch = useDispatch();
-  const nextId = useRef(3); //ID를 전역변수로 저장
   const inputRef = useRef(null); //input에 focus 주기
 
   // 초기값
@@ -23,9 +22,9 @@ function Form() {
   const [todo, setTodo] = useState(initialState);
 
   // 초기렌더링 시 input에 focus 주기
-  // useEffect(() => {
-  //   inputRef.current.focus();
-  // }, []);
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   // 컴포넌트 최적화를 위해 useCallback을 사용
   const onChangeHandler = useCallback(
@@ -36,16 +35,10 @@ function Form() {
     [todo]
   );
 
-  // id 생성 함수
-  const idCreate = () => {
-    nextId.current += 1;
-  };
-
   const onSubmitHandler = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(addTodo({ ...todo, id: nextId.current }));
-      idCreate();
+      dispatch(addTodo({ ...todo }));
       // [...todos, todo]
       setTodo(initialState); //input값 초기값으로 다시 세팅
       inputRef.current.focus(); // 등록될 때마다 input에 focus 주기
@@ -55,33 +48,33 @@ function Form() {
 
   return (
     <div>
-      <form onSubmit={onSubmitHandler}>
-        <ToDoForm>
-          <InputBox>
-            <label>제목</label>
-            <input
-              name="title"
-              type="text"
-              onChange={onChangeHandler}
-              ref={inputRef}
-              value={todo.title}
-            ></input>
-            <label>내용</label>
-            <input
-              name="memo"
-              type="text"
-              value={todo.memo}
-              onChange={onChangeHandler}
-            ></input>
-          </InputBox>
-          <button>추가하기</button>
-        </ToDoForm>
-      </form>
+      <StyledForm onSubmit={onSubmitHandler}>
+        <StyledContainer>
+          <label>제목</label>
+          <input
+            name="title"
+            type="text"
+            onChange={onChangeHandler}
+            ref={inputRef}
+            value={todo.title}
+            required
+          ></input>
+          <label>내용</label>
+          <input
+            name="memo"
+            type="text"
+            value={todo.memo}
+            onChange={onChangeHandler}
+            required
+          ></input>
+        </StyledContainer>
+        <button>추가하기</button>
+      </StyledForm>
     </div>
   );
 }
 
-const ToDoForm = styled.div`
+const StyledForm = styled.form`
   background-color: rgb(242, 234, 234);
   height: 100px;
 
@@ -100,7 +93,7 @@ const ToDoForm = styled.div`
   }
 `;
 
-const InputBox = styled.div`
+const StyledContainer = styled.div`
   flex-grow: 8;
   margin: 0px 10px;
   input {
@@ -115,4 +108,4 @@ const InputBox = styled.div`
   }
 `;
 
-export default Form;
+export default React.memo(Form);

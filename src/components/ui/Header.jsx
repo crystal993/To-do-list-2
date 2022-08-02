@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <Container>
-      <Title to="/">My Todo List</Title>
-    </Container>
+    <StyledContainer>
+      <StyledTitle to="/">My Todo List</StyledTitle>
+    </StyledContainer>
   );
 }
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   height: 50px;
   background-color: rgb(251, 255, 254);
 
@@ -18,7 +18,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Title = styled(Link)`
+const StyledTitle = styled(Link)`
   margin: 0px 20px;
   text-decoration: none;
   color: black;

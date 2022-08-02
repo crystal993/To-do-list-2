@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 function Layout(props) {
-  return <Layouts>{props.children}</Layouts>;
+  return <StyledLayout>{props.children}</StyledLayout>;
 }
 
-const Layouts = styled.div`
+const StyledLayout = styled.div`
   max-width: 1200px;
   min-width: 800px;
   margin: 0 auto;
