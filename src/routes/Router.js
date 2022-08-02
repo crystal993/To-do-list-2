@@ -10,9 +10,7 @@ function Router() {
     <div className="style-app">
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/detail/:id" element={<Detail />}>
-          <Route path=":id" element={<Detail />} />
-        </Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>

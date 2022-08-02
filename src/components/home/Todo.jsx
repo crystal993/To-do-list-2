@@ -37,7 +37,11 @@ const TodoItem = styled.div`
 `;
 
 const ItemContents = styled.div`
-  text-align: left;
+  text-align: center;
+  height: 110px;
+  h2 {
+    margin: 5px auto;
+  }
 `;
 
 const ItemButtons = styled.div`
