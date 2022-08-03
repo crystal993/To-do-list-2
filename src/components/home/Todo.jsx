@@ -4,9 +4,9 @@ import todos from "../../redux/modules/todos";
 
 function Todo({ todo, onDeleteHanlder, onToggleHandler }) {
   return (
-    <TodoItem>
+    <StyledTodoItem>
       <StyledLink to={`/detail/${todo.id}`}>
-        <ItemContents>
+        <StyledItemContents>
           <h2>
             {todo.title?.length < 15
               ? todo.title
@@ -17,19 +17,19 @@ function Todo({ todo, onDeleteHanlder, onToggleHandler }) {
               ? todo.memo
               : todo.memo?.slice(0, 10).concat("...")}
           </p>
-        </ItemContents>
+        </StyledItemContents>
       </StyledLink>
-      <ItemButtons>
+      <StyledItemButtons>
         <button onClick={() => onDeleteHanlder(todo.id)}>삭제</button>
         <button onClick={() => onToggleHandler(todo.id)}>
           {todo.isDone ? "취소" : "완료"}
         </button>
-      </ItemButtons>
-    </TodoItem>
+      </StyledItemButtons>
+    </StyledTodoItem>
   );
 }
 
-const TodoItem = styled.div`
+const StyledTodoItem = styled.div`
   box-sizing: border-box;
 
   width: 24%;
@@ -45,7 +45,7 @@ const TodoItem = styled.div`
   color: rgb(38, 37, 37);
 `;
 
-const ItemContents = styled.div`
+const StyledItemContents = styled.div`
   margin-top: 15px;
   text-align: center;
   height: 100px;
@@ -54,7 +54,7 @@ const ItemContents = styled.div`
   }
 `;
 
-const ItemButtons = styled.div`
+const StyledItemButtons = styled.div`
   width: 100%;
   button {
     background-color: white;
