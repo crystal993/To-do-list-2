@@ -1,13 +1,22 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import todos from "../../redux/modules/todos";
 
-function Todo({ todo, setTodos, onDeleteHanlder, onToggleHandler }) {
+function Todo({ todo, onDeleteHanlder, onToggleHandler }) {
   return (
     <TodoItem>
       <StyledLink to={`/detail/${todo.id}`}>
         <ItemContents>
-          <h2>{todo.title}</h2>
-          <p>{todo.memo}</p>
+          <h2>
+            {todo.title?.length < 15
+              ? todo.title
+              : todo.title?.slice(0, 9).concat("...")}
+          </h2>
+          <p>
+            {todo.memo?.length < 20
+              ? todo.memo
+              : todo.memo?.slice(0, 10).concat("...")}
+          </p>
         </ItemContents>
       </StyledLink>
       <ItemButtons>

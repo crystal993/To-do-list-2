@@ -39,7 +39,6 @@ function Form() {
     (e) => {
       e.preventDefault();
       dispatch(addTodo({ ...todo }));
-      // [...todos, todo]
       setTodo(initialState); //input값 초기값으로 다시 세팅
       inputRef.current.focus(); // 등록될 때마다 input에 focus 주기
     },
