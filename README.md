@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Simple To Do List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React App - Chrome 2022-08-04 15-30-21](https://user-images.githubusercontent.com/72599761/182779856-58255d8b-793c-4d86-85dd-c31cb39542ca.gif)
 
-## Available Scripts
 
-In the project directory, you can run:
+## 디렉토리 구조
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](https://user-images.githubusercontent.com/72599761/182780465-6ebf104a-8a30-4c30-9e1f-a85a0ba2c8d9.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br/>
 
-### `yarn test`
+## 디렉토리 구조 및 기능 상세 설명
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pages <br/>
+- Home :
+유저들이 todo를 생성(Create), 읽기(Read), 수정(Update - 할 일 완료/취소), 삭제(Delete)가 가능하다. 각각의 todo를 클릭하면 /detail/:todo_id로 리다이렉트 된다. <br/>
 
-### `yarn build`
+- Detail :
+각각의 todo 페이지마다 id, title, contents 읽기(Read)가 가능하다. 
+이전 버튼을 누르면 이전 페이지로 돌아간다. <br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Not Found :
+잘못된 주소를 입력했을 시 404 Not Found
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Components 
+### UI <br/>
+UI는 모든 페이지에서 적용이 가능한 컴포넌트들을 모아놓은 폴더이다. <br/>
+Home, Detail, Not Found 페이지 모두 다 Layout과 Header가 존재한다. <br/><br/>
+- Layout : 레이아웃, max-size, min-size 모든 페이지 동일하게 적용 <br/>
+- Header : 프로젝트 이름 명시하고, Home으로 가는 링크 적용 <br/>
 
-### `yarn eject`
+### Home <br/>
+Home 페이지에서 사용되는 컴포넌트들을 모아놓은 폴더이다. <br/><br/>
+- Form : 새로운 todo를 만들 수 있다. <br/>
+input에 값을 입력하지 않는 경우 폼 전송이 불가능하다. 생성된 todo는 store에 저장된다. <br/>
+- List : Working과 Done 2개의 카테고리가 존재한다. <br/>
+Working은 할 일을 완료 하기 전 상태 (isDone: false) <br/>
+Done은 할일을 완료한 상태 (isDone : true) <br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Todo : todo title, contents를 보여준다. <br/>
+완료나 취소버튼을 누르면 todo의 isDone 상태가 true/false로 바뀐다.(toggle) <br/>
+삭제 버튼을 누르면 리덕스 스토어에 저장된 todo list에서 삭제 된다. <br/>
+todo의 title이나 contents를 클릭하면 /detail/:todo_id로 리다이렉트 된다. <br/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Router <br/>
+- Router : react-router-dom(v6)를 사용 <br/>
+Home, Not Found, Detail로 가는 Route들 존재한다. <br/>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br/>
 
-## Learn More
+## Redux <br/>
+todos : todos 모듈에는 todolist의 CRUD에 해당되는 ACTION, ACTION CREATOR, INITIAL STATE, REDUCER이 생성되어 있다. <br/>
+configureStore : todos 모듈을 포함한 root reducer 생성<br/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br/>
