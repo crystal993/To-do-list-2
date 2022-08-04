@@ -1,4 +1,4 @@
-# Simple To Do List
+# To Do List 2주차 과제
 
 ![React App - Chrome 2022-08-04 15-30-21](https://user-images.githubusercontent.com/72599761/182779856-58255d8b-793c-4d86-85dd-c31cb39542ca.gif)
 
@@ -54,7 +54,7 @@ Home, Not Found, Detail로 가는 Route들 존재한다. <br/>
 <br/>
 
 ## Redux <br/>
-todos : todos 모듈에는 todolist의 CRUD에 해당되는 ACTION, ACTION CREATOR, INITIAL STATE, REDUCER이 생성되어 있다. <br/>
-configureStore : todos 모듈을 포함한 root reducer 생성<br/>
+- todos : todos 모듈에는 todolist의 CRUD에 해당되는 ACTION, ACTION CREATOR, INITIAL STATE, REDUCER이 생성되어 있다. <br/>
+- configureStore : todos 모듈을 포함한 root reducer 생성<br/>
 
 <br/>
