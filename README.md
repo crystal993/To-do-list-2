@@ -55,6 +55,6 @@ Home, Not Found, Detail로 가는 Route들 존재한다. <br/>
 
 ## Redux <br/>
 - todos : todos 모듈에는 todolist의 CRUD에 해당되는 ACTION, ACTION CREATOR, INITIAL STATE, REDUCER이 생성되어 있다. <br/>
-- configureStore : todos 모듈을 포함한 root reducer 생성<br/>
+- configureStore : todos 모듈을 포함한 root reducer 생성, logger-debugger 미들웨어 적용 <br/>
 
 <br/>
